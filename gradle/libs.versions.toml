@@ -1,0 +1,61 @@
+# =====================================================================
+# Catálogo de versiones (Version Catalog) de GamoPanel Mobile.
+# Todas las dependencias se declaran aquí y se usan como libs.xxx.
+# NOTA: versiones estables conocidas; actualízalas desde Android Studio
+# (Alt+Enter sobre una versión) si hay otras más nuevas.
+# =====================================================================
+
+[versions]
+# Plugin de Android Gradle (compilar la app Android).
+agp = "8.11.1"
+# Kotlin (también fija la versión del compilador de Compose).
+kotlin = "2.2.20"
+# Compose Multiplatform de JetBrains (UI compartida Android + iOS).
+compose-multiplatform = "1.9.0"
+# Activity Compose: punto de entrada de la UI en Android.
+androidx-activity = "1.11.0"
+androidx-credentials = "1.5.0"
+# Corrutinas: llamadas de red asíncronas.
+coroutines = "1.10.2"
+# Ktor: cliente HTTP multiplataforma (OkHttp en Android, Darwin en iOS).
+ktor = "3.2.3"
+# kotlinx.serialization: lectura de JSON del panel.
+serialization = "1.9.0"
+# Haze: desenfoque de FONDO (backdrop blur) multiplataforma = "vidrio".
+haze = "1.6.10"
+# SDK de Android: compila contra 36, mínimo 31 (RenderEffect/blur nativo).
+android-compileSdk = "36"
+android-targetSdk = "35"
+android-minSdk = "31"
+
+[libraries]
+# --- Compose Multiplatform (UI compartida) ---
+compose-runtime = { module = "org.jetbrains.compose.runtime:runtime", version.ref = "compose-multiplatform" }
+compose-foundation = { module = "org.jetbrains.compose.foundation:foundation", version.ref = "compose-multiplatform" }
+compose-ui = { module = "org.jetbrains.compose.ui:ui", version.ref = "compose-multiplatform" }
+compose-material3 = { module = "org.jetbrains.compose.material3:material3", version.ref = "compose-multiplatform" }
+# --- Android ---
+androidx-activity-compose = { module = "androidx.activity:activity-compose", version.ref = "androidx-activity" }
+androidx-credentials = { module = "androidx.credentials:credentials", version.ref = "androidx-credentials" }
+androidx-credentials-play-services = { module = "androidx.credentials:credentials-play-services-auth", version.ref = "androidx-credentials" }
+# --- Corrutinas ---
+kotlinx-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "coroutines" }
+kotlinx-coroutines-android = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "coroutines" }
+# --- Red (Ktor) ---
+ktor-client-core = { module = "io.ktor:ktor-client-core", version.ref = "ktor" }
+ktor-client-content-negotiation = { module = "io.ktor:ktor-client-content-negotiation", version.ref = "ktor" }
+ktor-serialization-kotlinx-json = { module = "io.ktor:ktor-serialization-kotlinx-json", version.ref = "ktor" }
+ktor-client-okhttp = { module = "io.ktor:ktor-client-okhttp", version.ref = "ktor" }
+ktor-client-darwin = { module = "io.ktor:ktor-client-darwin", version.ref = "ktor" }
+# --- JSON ---
+kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "serialization" }
+# --- Liquid Glass (desenfoque de fondo) ---
+haze = { module = "dev.chrisbanes.haze:haze", version.ref = "haze" }
+
+[plugins]
+# Cada plugin se aplica con alias(libs.plugins.xxx) en los build.gradle.kts.
+androidApplication = { id = "com.android.application", version.ref = "agp" }
+kotlinMultiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
+composeMultiplatform = { id = "org.jetbrains.compose", version.ref = "compose-multiplatform" }
+composeCompiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
+kotlinSerialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }

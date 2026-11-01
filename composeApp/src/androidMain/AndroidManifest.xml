@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Manifiesto Android de GamoPanel Mobile. -->
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Permiso para hablar con el servidor por red. -->
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:allowBackup="false"
+        android:label="GamoPanel"
+        android:theme="@style/Theme.GamoPanel"
+        android:usesCleartextTraffic="false">
+
+        <!-- configChanges: evita recrear la actividad al rotar o cambiar tamaño. -->
+        <activity
+            android:name=".MainActivity"
+            android:configChanges="orientation|screenSize|screenLayout|smallestScreenSize|keyboardHidden|uiMode"
+            android:exported="true"
+            android:windowSoftInputMode="adjustResize">
+            <!-- Actividad de arranque (icono del launcher). -->
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+</manifest>
